@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useParams, useNavigate} from "react-router-dom";
+import {Link} from 'react-router-dom';
 
 function Edit() {
   // const [products, setProducts] = useState([]);
@@ -70,6 +71,7 @@ function Edit() {
             </select>
             <button onClick={textChange}>Submit</button> 
           </form>
+          <Link to="/">Back to all Products</Link>
       </div>
     );
   }

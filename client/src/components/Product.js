@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useParams, useNavigate} from "react-router-dom";
+import {Link} from 'react-router-dom';
 
 function Product() {
   const {id} = useParams();
@@ -72,15 +73,15 @@ function Product() {
   return (
     <div>
         <h1>{products.name}</h1>
-      <ul>
-        <li>${products.price}</li>
+        <div>Price: ${products.price}</div>
         {/* <li onClick={categoryFilter}><a >{products.category}</a></li> */}
-        <li><a href={`/?category=${products.category}`}>{products.category}</a></li>
-      </ul>
-      
+        <div>Category: <a href={`/?category=${products.category}`}>{products.category}</a></div>
       <form>
-        <button onClick={deleteComment}>delete</button>
+        <button onClick={deleteComment}>Delete this Product</button>
       </form>
+      <Link to={`/${id}/edit`}>Edit this Products</Link>
+      <br />
+      <Link to="/">Back to all Products</Link>
     </div>
   );
 }

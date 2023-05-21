@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useParams, useNavigate, useSearchParams } from "react-router-dom";
+import {Link} from 'react-router-dom';
 
 function Home() {
   // const {id} = useParams();
@@ -32,7 +33,20 @@ function Home() {
   // console.log(document.querySelector('#ulist'))
   return (
     <div>
-      <ul id='ulist'>
+        {
+        (typeof products.length === 0) ? 
+        (
+        <p>Loading...</p>
+        ) : (
+          (category === "") ? 
+          (
+          <h1>All PRODUCTS</h1>
+          ) : (
+          <h1>{category.toUpperCase()} PRODUCTS</h1>)
+        )
+        }
+      
+      <ul>
         {(typeof products.length === 0) ? (
         <p>Loading...</p>
         ) : (
@@ -41,6 +55,12 @@ function Home() {
           ))
         )}
       </ul>
+      {
+      category !== '' &&
+        <a href='/'>All Products</a>
+      }
+      <br />
+      <Link to="/new">Add New Product</Link>
     </div>
   );
 }
