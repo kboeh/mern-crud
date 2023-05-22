@@ -23,7 +23,7 @@ function Product() {
     )
   }, [id])
 
-  let deleteComment = () => {
+  let deleteProduct = () => {
     fetch(`/products/${id}`, {
       headers: {
       Accept: "application/json",
@@ -53,7 +53,8 @@ function Product() {
         <div>Price: ${products.price}</div>
         <div>Category: <a href={`/?category=${products.category}`}>{products.category}</a></div>
       <form>
-        <button onClick={deleteComment}>Delete this Product</button>
+        {/* button must be wrapped in a form to submit request */}
+        <button onClick={deleteProduct}>Delete this Product</button>
       </form>
       <Link to={`/${id}/edit`}>Edit this Products</Link>
       <br />
