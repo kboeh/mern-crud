@@ -3,13 +3,9 @@ import {useParams, useNavigate} from "react-router-dom";
 import {Link} from 'react-router-dom';
 
 function Edit() {
-  // const [products, setProducts] = useState([]);
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
   const [category, setCategory] = useState('');
-  // console.log(name)
-  // console.log(price)
-  // console.log(category)
 
   const navigate = useNavigate();
   const {id} = useParams();
@@ -29,7 +25,7 @@ function Edit() {
   },[id]);
     
   let textChange = () => {
-    // sending PUT request with fetch API in javascript
+    // sending PUT request with fetch API
     fetch(`/products/${id}`, {
       headers: {
       Accept: "application/json",
@@ -53,7 +49,6 @@ function Edit() {
     })
     
     navigate(`/${id}`);
-      
   };
 
 

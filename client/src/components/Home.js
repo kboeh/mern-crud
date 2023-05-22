@@ -1,11 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import {useParams, useNavigate, useSearchParams } from "react-router-dom";
+import {useSearchParams } from "react-router-dom";
 import {Link} from 'react-router-dom';
 
 function Home() {
-  // const {id} = useParams();
   const [products, setProducts] = useState([]);
-  // const navigate = useNavigate();
   
   //useSearchParams() allows you to store paramters in query string
   const [searchParams] = useSearchParams();
@@ -25,16 +23,12 @@ function Home() {
         // console.log(data);
       }
     )
-  },[]);
-
+  },[category]); 
   
-  console.log(searchParams.get('category'));  
-  // console.log(products)
-  // console.log(document.querySelector('#ulist'))
   return (
     <div>
         {
-        (typeof products.length === 0) ? 
+        (products.length === 0) ? 
         (
         <p>Loading...</p>
         ) : (
@@ -47,7 +41,7 @@ function Home() {
         }
       
       <ul>
-        {(typeof products.length === 0) ? (
+        {(products.length === 0) ? (
         <p>Loading...</p>
         ) : (
           products.map((x) => (

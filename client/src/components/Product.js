@@ -4,7 +4,6 @@ import {Link} from 'react-router-dom';
 
 function Product() {
   const {id} = useParams();
-  // const {category} = useParams();
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
 
@@ -25,7 +24,6 @@ function Product() {
   }, [id])
 
   let deleteComment = () => {
-    // sending PATCH request with fetch API in javascript
     fetch(`/products/${id}`, {
       headers: {
       Accept: "application/json",
@@ -49,32 +47,10 @@ function Product() {
       
   };
 
-  let categoryFilter = () => {
-    fetch(`/products?category=${products.category}`, {
-      headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json"
-      },
-      method: "GET",	
-    })
-    .then(function (response) {
-    return response.json();
-    })
-    .then(function (data) {
-    console.log(data)
-    })
-    
-    // navigate('/');
-      
-  };
-
-
-
   return (
     <div>
         <h1>{products.name}</h1>
         <div>Price: ${products.price}</div>
-        {/* <li onClick={categoryFilter}><a >{products.category}</a></li> */}
         <div>Category: <a href={`/?category=${products.category}`}>{products.category}</a></div>
       <form>
         <button onClick={deleteComment}>Delete this Product</button>
